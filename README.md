@@ -1,5 +1,5 @@
 # Python-Django
-python django project- online site for shopping electronic appliances
+python django project- online site for shopping electronic appliances.
 As a customer, we all are interested to purchase ,view and to know the price 
 of various electronic products. The main objective of the project is to create 
 an online store for electronic appliances that allows customers to search
