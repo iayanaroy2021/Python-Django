@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+ {%include "common/icon.html" %}
+<head>
+    <style>
+        .cartbtn
+    {
+	display: inline-block;
+	font-size: 14px;
+	color: #ffffff;
+	background: #edbb18;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 14px 30px 15px;
+	border-radius: 50px;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.header
+{
+width:100%;
+}
+        input[type=text] {
+  width: 200px;
+
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url("{%static 'img/img.png' %});
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User HomePage</title>
+
+    <!-- Google Font -->
+    <link href= 'https://fonts.googleapis.com/css2?family=Cookie&display=swap'  rel="stylesheet">
+    <link href= 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap'
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/newstyle.css'  %}"  type="text/css">
+</head>
+
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li><a href="#"><span class="icon_heart_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+            <li><a href="#"><span class="icon_bag_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="{%static 'img/logos.png' %}" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+
+ <header class="header"  style="background-color:#17a9e8">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="{%static 'img/logos.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <!--<li class="active"><a href="./index.html">Home</a></li>-->
+                            {%for cate in cate%}
+                            <li><a href="{%url 'category' id=cate.id regid=regobj.id %}">{{cate.cate_name}}</a></li>
+                            {% endfor %}
+
+
+                            <li> <a href="{% url 'login' %}"></a></li>
+                            <a href="{% url 'signup' %}"></a>
+
+                            <li><a href="#">Account</a>
+                                <ul class="dropdown">
+                                       <li><a href="{%url 'vieworder' id=regobj.id %}">Your Orders</a></li>
+                                    <li><a href="{%url 'account' id=regobj.id %}">Your Account</a></li>
+                                    <li><a href="{%url 'logout' %}">Logout</a></li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__right">
+                        <div class="header__right__auth">
+
+                        </div>
+
+                        <ul class="header__right__widget">
+
+
+
+                            <li><a href="#"><span class="icon_bag_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+        </div>
+    </header>
+
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <div class="section-title">
+                    <h4>New product</h4>
+                </div>
+            </div>
+           <!--- <div class="col-lg-8 col-md-8">
+                <ul class="filter__controls">
+                    <li class="active" data-filter="*">All</li>
+                    <li data-filter=".computer">Computer</li>
+                    <li data-filter=".mobile">Mobile</li>
+                    <li data-filter=".homeaapl">Home Appliances</li>
+                    <li data-filter=".gadget">Gadgets</li>
+
+                </ul>
+            </div>
+        </div> -->
+        <div class="row property__gallery">
+
+             {%for product in products %}
+            <div class="col-lg-3 col-md-4 col-sm-6 mix women">
+
+              <div class="product__item">
+                    <div class="product__item__pic set-bg"  data-setbg="/uploads/{{product.pro_image}}">
+                        <div class="label new">New</div>
+                        <ul class="product__hover">
+                            <li><a href="{%url 'details' id=product.id regid=regobj.id %}" ><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">{{product.pro_name}}</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">Rs. {{product.pro_price}}</div>
+                         <div class="product__price" ><a href=#>Buy Now <span class="fas fa-bags-shopping"></span></a></div>
+
+
+
+                    </div>
+            </div>
+
+
+
+
+
+        </div>
+            {%endfor %}
+    </div>
+    </div>
+    </div>
+</section>
+    <!-- Header Section End -->
+    <!-- Breadcrumb Begin -->
+
+    <!-- Breadcrumb End -->
+
+    <!-- Product Details Section Begin -->
+
+    <!-- Product Details Section End -->
+
+    <!-- Instagram Begin -->
+
+    <!-- Instagram End -->
+
+    <!-- Footer Section Begin -->
+     {%include 'common/footer.html' %}
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="{%static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{%static 'js/bootstrap.min.js' %}"></script>
+<script src="{%static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{%static 'js/jquery-ui.min.js' %}"></script>
+<script src="{%static 'js/mixitup.min.js' %}"></script>
+<script src="{%static 'js/jquery.countdown.min.js' %}"></script>
+<script src="{%static 'js/jquery.slicknav.js' %}"></script>
+<script src="{%static 'js/owl.carousel.min.js' %}"></script>
+<script src="{%static 'js/jquery.nicescroll.min.js' %}"></script>
+<script src="{%static 'js/main.js' %}"></script>
+</body>
+
+</html>

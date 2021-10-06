@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {%load static %}
+  {%include "common/icon.html" %}
+
+    <style>
+    .butoonclass
+    {
+    font-weight: bold;
+
+     position: relative;
+     width: 40%;
+    left: 100px;
+    background: #ff4b5a;
+  line-height: 50px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0 22px;
+  font-size: 16px;
+  color: #555;
+    }
+
+        .wrap
+        {
+        width:500px;
+        right:410px;
+        position:absolute;
+        }
+        .body
+        {
+        background:white;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+</head>
+<link href="{%static 'css/main.css' %}" rel="stylesheet" >
+
+<body >
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50" style="background-color:grey;">
+        <div class="wrap">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Login</h2>
+                </div>
+                <h5 style="color:red">{{error}}</h5>
+                <div class="card-body">
+                    <form method="POST"  name="frmlogin" action="{%url 'adminlogin' %}">
+                        {% csrf_token %}
+
+
+                        <div class="form-row">
+                            <div class="name">Username</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="admin_user" required="">
+                                </div>
+                            </div>
+                        </div>
+                      <div class="form-row">
+                            <div class="name">Password</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="password" name="admin_pass" required="">
+                                     <h5 style="color:red" >  </h5>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div>
+                            <button  type="submit" class="butoonclass"  >Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+</body>
+</body>
+</html>

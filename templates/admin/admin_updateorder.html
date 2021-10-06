@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+{%include 'common/icon.html' %}
+{%include "admin/admin_sidebar.html" %}
+
+<head>
+    <style>
+    #wrapper {
+    right:-10px;
+    width:1100px;
+     }
+     .col-md-6
+     {
+      width:900px;
+      top:5px;
+     }
+     .row
+     {
+     top:80px;
+    right:45px;
+    position:absolute;
+
+     }
+     label
+     {color:blue;}
+
+    .card-header
+    {
+    background:black;
+    }
+
+
+  .btn-primary {
+  background-color: #ff4b5a;
+  border: none;
+  color: white;
+  align:center;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  }
+     .button {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+
+  }
+
+
+
+</style>
+    <meta charset="UTF-8">
+    <title>Product Type</title>
+</head>
+<script type="text/javascript">
+                 function Validation()
+                 {
+			    alert("Status Updated Successfully");
+				}
+
+                 </script>
+
+<link href="{%static 'css/main.css' %}" rel="stylesheet" >
+<body>
+<div id="wrapper" class="d-flex flex-column">
+    <h1 align="center"></h1>
+      <section class="content" style="color:blue">
+      <div class="container-fluid" style="color:blue">
+        <div class="row">
+
+          <div class="col-md-6" style="color:blue">
+            <div class="card card-primary" >
+              <div class="card-header" >
+                <h3 class="card-title" style="color:grey;" >Update Status</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form"  method="post" action=" " onsubmit="return (Validation());" >
+              {% csrf_token %}
+               <div class="form-group">
+                    <label for="type" >Status</label>
+                    <select class="form-control select2" style="width: 100%;" id="type" name="order_type" >
+                      <option value="0">--Select--</option>
+                      {%for orders in orders%}
+                        <option value="{{orders.id}}">{{orders.order_status}}</option>
+                      {%endfor%}
+                    </select>
+                  </div>
+                   <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" style="height:50px">Update </button>
+                </div>
+              </form>
+
+              <!-- /.card-body -->
+
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+<!-- /.container-fluid -->
+      </div>
+    </section>
+
+                        </div>
+     </div>
+
+</body>
+</html>

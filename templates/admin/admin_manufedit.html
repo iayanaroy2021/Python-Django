@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+{%include 'common/icon.html' %}
+{%include "admin/admin_sidebar.html" %}
+
+
+<head>
+    <style>
+    #wrapper {
+    right:30px;
+    width:1100px;
+    position:absolute;
+
+     }
+     .col-md-6
+     {
+      width:900px;
+      top:5px;
+     }
+     .row
+     {
+     top:80px;
+    right:-20px;
+    position:absolute;
+
+     }
+     label
+     {color:blue;}
+
+    .card-header
+    {
+    background:black;
+    }
+
+
+  .btn-primary {
+  background-color: #ff4b5a;
+  border: none;
+  color: white;
+  align:center;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  }
+
+     .button {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+
+  }
+
+
+
+</style>
+    <meta charset="UTF-8">
+    <title>Product Type</title>
+</head>
+<script type="text/javascript">
+                 function Validation()
+                 {
+			    alert("Updted Successfully");
+				}
+
+                 </script>
+
+<link href="{%static 'css/main.css' %}" rel="stylesheet" >
+<body>
+<div id="wrapper" class="d-flex flex-column">
+    <h1 align="center">Manufacturer</h1>
+      <section class="content" style="color:blue">
+      <div class="container-fluid" style="color:blue">
+        <div class="row">
+
+          <div class="col-md-6" style="color:blue">
+            <div class="card card-primary" style="color:blue">
+              <div class="card-header" style="color:blue">
+                 <h3 class="card-title" style="color:grey;" >Edit Manufacturer</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form"  method="post" action="{%url 'edit' edit.id %}" onsubmit="return (Validation());" >
+              {% csrf_token %}
+       <div class="card-body">
+                  <div class="form-group">
+                    <label for="language">Manufacturer Name</label>
+                    <input type="text" class="form-control" id="manfac" placeholder="manufacturer " name="manu_name" value="{{edit.manu_name}}" required="">
+                      <br>
+                      <label for="language"> Location</label>
+                    <input type="text" class="form-control" id="loc" placeholder="location" name="manu_loc" value="{{edit.manu_location}}" required="">
+                  </div>
+
+                  </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" style="height:50px">Edit </button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+
+        </div>
+<!-- /.container-fluid -->
+      </div>
+    </section>
+
+</div>
+
+
+</body>
+</html>

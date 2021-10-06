@@ -1,0 +1,39 @@
+
+
+{% block content %}
+
+
+<head>
+    <style>
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<title>Payment Section</title>
+
+<div class="center">
+
+    <form class="text-center border border-light p-5" action="{%url 'success' id=regis.id   %}" method="POST">
+        {% csrf_token %}
+
+        <p class="h3 mb-3"><i class="fas fa-coffee"></i> Electrozone Shopping</p>
+        <p class="mb-3">Product Price</p>
+        <input name="amount" type="number" class="form-control" id="exampleInputPassword1" value="{{pro.pro_price}}">
+
+        <!-- RAZORPAY INTEGRATION HERE -->
+        <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_T0XcyerniuvbaY"
+            data-amount=50000 data-currency="INR" data-order_id="{{payment1.id}}" data-buttontext="Pay with Razorpay"
+            data-name="Electro-Zone" data-description="Complete electronic shoppie"
+            data-image="/uploads/images/img.png" data-prefill.name="Electrozone" data-prefill.email="electrozone@gmail.com"
+            data-theme.color="#006400"></script>
+    </form>
+
+</div>
+
+
+</div>
+{% endblock %}

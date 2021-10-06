@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+{%include 'common/icon.html' %}
+{%include "admin/admin_sidebar.html" %}
+
+
+<head>
+    <style>
+    #wrapper {
+    right:30px;
+    width:1100px;
+    position:absolute;
+
+     }
+     .col-md-6
+     {
+      width:900px;
+      top:5px;
+     }
+     .row
+     {
+     top:80px;
+    right:-20px;
+    position:absolute;
+
+     }
+     label
+     {color:blue;}
+
+    .card-header
+    {
+    background:black;
+    }
+
+
+  .btn-primary {
+  background-color: #ff4b5a;
+  border: none;
+  color: white;
+  align:center;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  }
+     .button {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+
+  }
+
+
+
+</style>
+    <meta charset="UTF-8">
+    <title>Product Type</title>
+</head>
+<script type="text/javascript">
+                 function Validation()
+                 {
+			    alert("Updted Successfully");
+				}
+
+                 </script>
+
+<link href="{%static 'css/main.css' %}" rel="stylesheet" >
+<body>
+<div id="wrapper" class="d-flex flex-column">
+    <h1 align="center">Product Type</h1>
+     <section class="content" style="color:blue">
+      <div class="container-fluid" style="color:blue">
+        <div class="row">
+
+          <div class="col-md-6" style="color:blue">
+            <div class="card card-primary" style="color:blue">
+              <div class="card-header" style="color:blue">
+                <h3 class="card-title" style="color:grey;" >Edit product type</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form"  method="post" action="{%url 'protypedit' editpro.id  %}" onsubmit="return (Validation());" >
+              {% csrf_token %}
+       <div class="card-body">
+                  <div class="form-group">
+                    <label for="product">Product Type</label>
+                    <input type="text" class="form-control" id="product" placeholder="product " name="pro_type" value="{{editpro.protype_name}}" required="">
+                      <br>
+                      <label for="shortname"> Short Name</label>
+                    <input type="text" class="form-control" id="shortname" placeholder="short name" name="pro_short1" value="{{editpro.protype_short}}" required="">
+                  <br>
+
+                      <label for="Category"> Category</label>
+                       {%for cat1 in cat1%}
+                         {% if cat1.id == editpro.cat_id %}
+                      <input type="text" class="form-control" id="category"  name="pro_short" value="{{cat1.cate_name}}" readonly>
+                         {%endif %}
+
+                      {%endfor%}
+
+
+                  </div>
+
+                  </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" style="height:50px">Update </button>
+                </div>
+
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+
+        </div>
+<!-- /.container-fluid -->
+      </div>
+    </section>
+
+</div>
+
+
+</body>
+</html>

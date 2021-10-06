@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+<head>
+    <style>
+    .form
+    {
+       border:green;
+       border-width:5px;
+       border-style:solid;
+       align:center;
+       width:500px;
+       height:300px;
+       }
+    </style>
+    <meta charset="UTF-8">
+    <title>Razorpay</title>
+</head>
+<body>
+    <div class="center">
+        <div class="text-center mt-5 pt-5">
+      <form class="form" action="{%url 'pay' id=proid.id regid=regid.id amt=proid.pro_price   %}" enctype="multipart/form-data" method="POST"  >
+    {% csrf_token %}
+  <img src="/uploads/images/img.png" class="img-fluid" style="height: 200px;color:green" alt="" width="200px" >
+    <br>
+          <br>
+    <button style="height:30px;color:green;font-weight:bold">Continue With RazorPay</button>
+</form>
+</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+{%include 'common/icon.html' %}
+{%include "admin/admin_sidebar.html" %}
+
+
+<head>
+    <style>
+    #wrapper {
+    right:30px;
+    width:1100px;
+    position:absolute;
+     }
+     .col-md-6
+     {
+      width:900px;
+      top:5px;
+     }
+     .row
+     {
+     top:80px;
+    right:80px;
+    position:absolute;
+
+     }
+     .col-md-7
+     {
+    top:20px;
+    right:-70px;
+    position:absolute;
+     }
+     label
+     {color:blue;}
+
+    .card-header
+    {
+    background:black;
+    }
+
+  .btn-primary {
+  background-color: #ff4b5a;
+  border: none;
+  color: white;
+  align:center;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  }
+
+
+
+</style>
+    <meta charset="UTF-8">
+    <title>Product Type</title>
+</head>
+<script type="text/javascript">
+                 function Validation()
+                 {
+			    alert("Added Successfully");
+				}
+
+                 </script>
+
+<link href="{%static 'css/main.css' %}" rel="stylesheet" >
+<body>
+<div id="wrapper" class="d-flex flex-column">
+    <h1 align="center">Category</h1>
+      <section class="content" style="color:blue">
+      <div class="container-fluid" style="color:blue">
+        <div class="row">
+
+          <div class="col-md-6" style="color:blue">
+            <div class="card card-primary" >
+              <div class="card-header" >
+                <h3 class="card-title" style="color:grey;" >Add Category</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form"  method="post" action="{%url 'category' %}" onsubmit="return (Validation());" >
+              {% csrf_token %}
+       <div class="card-body">
+                  <div class="form-group">
+                    <label for="language">category</label>
+                    <input type="text" class="form-control" id="category" placeholder="category " name="category" required="">
+
+                  </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" style="height:50px">Add </button>
+                </div>
+       </div>
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+
+
+             <div class="col-md-6">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title" style="color:grey;">Category</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th style="width: 5px">Category</th>
+
+
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {%for cat in cat%}
+                    <tr>
+                      <td>{{cat.cate_name}}</td>
+                    </tr>
+                    {%endfor%}
+                   </tbody>
+                </table>
+              </div>
+
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+
+        </div>
+<!-- /.container-fluid -->
+      </div>
+    </section>
+
+                        </div>
+     </div>
+
+</body>
+</html>

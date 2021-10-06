@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .center {
+            position: absolute;
+            text-align: center;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <div class="text-center mt-5 pt-5">
+    <img src="/uploads/images/img_1.png" class="img-fluid" style="height: 200px;color:green" alt="">
+    <h2 class="mt-4">Thanks your payment has been received</h2>
+    <a class="btn btn-success" href="{%url 'returnhome' id=regid.id %}">Return to HOME</a>
+</div>
+    </div>
+</body>
+
+
+</html>

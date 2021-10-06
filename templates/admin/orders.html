@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+{%include 'common/icon.html' %}
+{%include "admin/admin_sidebar.html" %}
+
+<head>
+    <style>
+    th
+    {color:black;
+
+    }
+    .label
+    {
+     border-style: solid;
+  border-width: thick;
+    }
+    .button {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+
+  }
+        .row1
+     {
+     width:1200px;
+     top:80px;
+    left:300px;
+    position:absolute;
+
+     }
+    </style>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+ <div class="row1">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                 <div class="panel panel-primary" >
+      <div class="panel-heading" style="background-color:black;height:50px;">
+        <h6 class="panel-title"  style="text-align:center;" >ORDERS</h6>
+      </div>
+                                <!-- Card Header - Dropdown -->
+                               <table class="table table-hover" id="dev-table" >
+        <thead>
+          <tr>
+              <th style="width:50px">sl no</th>
+            <th style="width:30px">Customer</th>
+            <th >Product</th>
+              <th style="width:30px">Price</th>
+            <th>Payment</th>
+            <th >Status</th>
+              <th style="width:30px">Update Status</th>
+
+          </tr>
+
+
+             {% for pay in pay %}
+          <tr>
+              <td>{{ forloop.counter }}</td>
+                <td>
+                        {% for reg in reg %}
+               {%if pay.userid_id == reg.id %}
+              {{reg.usr_name}}
+                    {% endif %}
+                    {% endfor %}
+
+
+            </td>
+              <td style="">
+             {% for products in products %}
+               {%if pay.proid_id == products.id %}
+              {{products.pro_name}}
+                    {% endif %}
+                    {% endfor %}
+              </td>
+
+
+            <td>
+                {% for products in products %}
+               {%if pay.proid_id == products.id %}
+              {{products.pro_price}}
+                    {% endif %}
+                    {% endfor %}
+
+            </td>
+
+              {% if pay.paid == 1 %}
+              <td style="color:green;align:center;">
+                 <i class="fa fa-check"></i>
+              </td>
+              {% endif %}
+              {%if pay.orderstatus_id == 1 %}
+
+              <td style="color:brown">
+                  <span class="label">
+                  Order Confirmed
+                  </span>
+              </td>
+              {%elif pay.orderstatus_id == 5 %}
+              <td style="color:orange;">
+                   <span class="label label-info">
+                  Shipped..............
+                   </span>
+              </td>
+               {%elif pay.orderstatus_id == 6 %}
+              <td style="color:blue;">
+                  <span class="label label-info">
+                  Out Of Delivery
+                  </span>
+              </td>
+              {%else  %}
+              <td style="color:green;"><span class="label label-info">
+                  Delivered.........</span>
+              </td>
+
+              {% endif %}
+                   <td style="width: 10px" class="button"><a href="{%url 'updateorderpay' id=pay.id %}"  class="fa fa-edit" style="font-size:18px;color:white"></a>
+                   </td>
+
+
+             </td>
+
+
+        </tr>
+        {% endfor %}
+
+        </thead>
+
+
+
+
+
+      </table>
+                                <!-- Card Body -->
+
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+
+                    </div>
+ </div>
+</body>
+</html>
